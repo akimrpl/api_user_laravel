@@ -1,0 +1,180 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Member",
+        "description": "Dokumentasi API untuk resource Member",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://my-default-host.com",
+            "description": "API Server"
+        },
+        {
+            "url": "/api"
+        }
+    ],
+    "paths": {
+        "/api/member": {
+            "get": {
+                "tags": [
+                    "Member"
+                ],
+                "summary": "Ambil semua member",
+                "operationId": "d203ed867af8af72b34a7a01d0fd3650",
+                "responses": {
+                    "200": {
+                        "description": "Data member berhasil diambil"
+                    },
+                    "404": {
+                        "description": "Tidak ada data member ditemukan"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Member"
+                ],
+                "summary": "Tambah member baru",
+                "operationId": "8afe8779597f1286ba044a125e5bf172",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nama",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "nama": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Member berhasil ditambahkan"
+                    },
+                    "400": {
+                        "description": "Request body invalid"
+                    }
+                }
+            }
+        },
+        "/api/member/{id}": {
+            "get": {
+                "tags": [
+                    "Member"
+                ],
+                "summary": "Ambil detail member berdasarkan ID",
+                "operationId": "73c9289353b4d5a4dcaac2b51c73b04c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detail member ditemukan"
+                    },
+                    "404": {
+                        "description": "Member tidak ditemukan"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Member"
+                ],
+                "summary": "Update data member",
+                "operationId": "d02c34b133b635518e5a50cb45ba622d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nama",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "nama": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Member berhasil diupdate"
+                    },
+                    "404": {
+                        "description": "Member tidak ditemukan"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Member"
+                ],
+                "summary": "Hapus data member",
+                "operationId": "eddc8a4c436612a20169ad3de286113d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Member berhasil dihapus"
+                    },
+                    "404": {
+                        "description": "Member tidak ditemukan"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Member",
+            "description": "Member"
+        }
+    ]
+}
